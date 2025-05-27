@@ -1,3 +1,4 @@
+-- Initial query retrieving all bookings with user, property, and payment details
 EXPLAIN ANALYZE
 SELECT
     bookings.id AS booking_id,
@@ -14,6 +15,7 @@ INNER JOIN properties ON bookings.property_id = properties.id
 INNER JOIN payments ON bookings.id = payments.booking_id
 ORDER BY bookings.id;
 
+-- Refactored query for performance improvement (filtering recent bookings)
 EXPLAIN ANALYZE
 SELECT
     b.id AS booking_id,
