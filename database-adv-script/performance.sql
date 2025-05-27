@@ -1,8 +1,6 @@
--- Initial query to get bookings with user, property, payment details
--- Analyze performance with EXPLAIN ANALYZE
-
+-- Initial query with EXPLAIN ANALYZE
 EXPLAIN ANALYZE
-SELECT 
+SELECT
     bookings.id AS booking_id,
     users.id AS user_id,
     users.name AS user_name,
@@ -12,16 +10,14 @@ SELECT
     payments.amount,
     payments.payment_date
 FROM bookings
-JOIN users ON bookings.user_id = users.id
-JOIN properties ON bookings.property_id = properties.id
-JOIN payments ON bookings.id = payments.booking_id
+INNER JOIN users ON bookings.user_id = users.id
+INNER JOIN properties ON bookings.property_id = properties.id
+INNER JOIN payments ON bookings.id = payments.booking_id
 ORDER BY bookings.id;
 
--- Refactored query to improve performance by filtering recent bookings
--- Analyze performance again with EXPLAIN ANALYZE
-
+-- Refactored query with EXPLAIN ANALYZE to improve performance
 EXPLAIN ANALYZE
-SELECT 
+SELECT
     b.id AS booking_id,
     u.id AS user_id,
     u.name AS user_name,
@@ -31,8 +27,8 @@ SELECT
     pay.amount,
     pay.payment_date
 FROM bookings b
-JOIN users u ON b.user_id = u.id
-JOIN properties p ON b.property_id = p.id
-JOIN payments pay ON b.id = pay.booking_id
+INNER JOIN users u ON b.user_id = u.id
+INNER JOIN properties p ON b.property_id = p.id
+INNER JOIN payments pay ON b.id = pay.booking_id
 WHERE b.booking_date >= CURRENT_DATE - INTERVAL '6 months'
 ORDER BY b.id;
