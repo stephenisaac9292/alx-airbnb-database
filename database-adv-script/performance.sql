@@ -1,4 +1,5 @@
--- Initial query to retrieve bookings with user, property, and payment details
+-- Initial query to get bookings with user, property, payment details
+-- Analyze performance with EXPLAIN ANALYZE
 
 EXPLAIN ANALYZE
 SELECT 
@@ -16,9 +17,8 @@ JOIN properties ON bookings.property_id = properties.id
 JOIN payments ON bookings.id = payments.booking_id
 ORDER BY bookings.id;
 
-
-
--- Refactored query for better performance: assume filtering by recent bookings to reduce dataset
+-- Refactored query to improve performance by filtering recent bookings
+-- Analyze performance again with EXPLAIN ANALYZE
 
 EXPLAIN ANALYZE
 SELECT 
