@@ -1,4 +1,3 @@
--- Initial query with EXPLAIN ANALYZE
 EXPLAIN ANALYZE
 SELECT
     bookings.id AS booking_id,
@@ -15,7 +14,6 @@ INNER JOIN properties ON bookings.property_id = properties.id
 INNER JOIN payments ON bookings.id = payments.booking_id
 ORDER BY bookings.id;
 
--- Refactored query with EXPLAIN ANALYZE to improve performance
 EXPLAIN ANALYZE
 SELECT
     b.id AS booking_id,
