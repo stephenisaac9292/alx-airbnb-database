@@ -15,7 +15,7 @@ INNER JOIN properties ON bookings.property_id = properties.id
 INNER JOIN payments ON bookings.id = payments.booking_id
 ORDER BY bookings.id;
 
--- Refactored query for performance improvement (filtering recent bookings)
+-- Refactored query with filtering using AND clause for better performance
 EXPLAIN ANALYZE
 SELECT
     b.id AS booking_id,
@@ -30,5 +30,6 @@ FROM bookings b
 INNER JOIN users u ON b.user_id = u.id
 INNER JOIN properties p ON b.property_id = p.id
 INNER JOIN payments pay ON b.id = pay.booking_id
-WHERE b.booking_date >= CURRENT_DATE - INTERVAL '6 months'
+WHERE b.booking_date >= CURRENT_DATE - INTERVAL '6 months' 
+  AND pay.amount > 0
 ORDER BY b.id;
