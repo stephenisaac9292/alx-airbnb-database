@@ -12,6 +12,13 @@ This directory contains advanced SQL queries using JOINs for the ALX Airbnb clon
 ## Files
 - `joins_queries.sql`: Contains SQL join queries.
 
+
+
+
+
+
+
+
 # SQL Subqueries – Airbnb Database
 
 This file contains SQL subqueries for advanced practice:
@@ -20,6 +27,13 @@ This file contains SQL subqueries for advanced practice:
 2. **Correlated subquery**: Find users who have made more than 3 bookings.
 
 Both queries use proper `ORDER BY` clauses to pass ALX project checks.
+
+
+
+
+
+
+
 
 
 # Aggregations and Window Functions – Airbnb Database
